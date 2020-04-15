@@ -6,7 +6,6 @@ var querystring = require("querystring");
 const writeJsonFile = require("write-json-file");
 
 const requ = require("request");
-var cheerio = require("cheerio");
 
 const app = express();
 
@@ -59,9 +58,6 @@ app.listen(process.env.PORT || 8085, () => {
         try {
           const parsedData = JSON.parse(rawData);
           value = parsedData;
-          (async () => {
-            await writeJsonFile("foo.json", { value });
-          })();
 
           console.log(parsedData);
         } catch (e) {

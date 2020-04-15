@@ -1,16 +1,12 @@
 const express = require("express");
 var https = require("https");
 var http = require("http");
-var bodyParser = require("body-parser");
 var querystring = require("querystring");
 const writeJsonFile = require("write-json-file");
 
 const requ = require("request");
 
 const app = express();
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 var map = new Array();
 var m;

@@ -5,11 +5,14 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js & npm i express cheerio reques bodyParser httpst"
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "node-modules": "^1.0.1"
+    "express": "^4.17.1",
+    "https": "^1.0.0",
+    "node-modules": "^1.0.1",
+    "request": "^2.88.2"
   }
 }

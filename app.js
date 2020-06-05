@@ -21,6 +21,8 @@ app.use(function (req, res, next) {
 global.data = "data";
 global.value = "value";
 global.locate = "";
+global.blog1 = "";
+global.blog2 = "";
 
 // const PORT = process.env.PORT || 8085;
 
@@ -99,6 +101,98 @@ app
             const parsedData = JSON.parse(rawData);
             locate = parsedData;
             resu.send(locate);
+
+            console.log(parsedData);
+          } catch (e) {
+            console.error(e.message);
+          }
+        });
+      }
+    );
+  })
+  .on("error", (e) => {
+    console.error(`Got error: ${e.message}`);
+  });
+
+app
+  .get("/blog1", (req, resu) => {
+    https.get(
+      `https://www.googleapis.com/blogger/v3/blogs/8337522737151010272/posts?key=AIzaSyCeHQxTnHn6e8PE5XU2g0rB6zp5qi1a1K0`,
+      (res) => {
+        const { statusCode } = res;
+        const contentType = res.headers["content-type"];
+
+        let error;
+        if (statusCode !== 200) {
+          error = new Error("Request Failed.\n" + `Status Code: ${statusCode}`);
+        } else if (!/^application\/json/.test(contentType)) {
+          error = new Error(
+            "Invalid content-type.\n" +
+              `Expected application/json but received ${contentType}`
+          );
+        }
+        if (error) {
+          console.error(error.message);
+
+          res.resume();
+          return;
+        }
+
+        let rawData = "";
+        res.on("data", (chunk) => {
+          rawData += chunk;
+        });
+        res.on("end", () => {
+          try {
+            const parsedData = JSON.parse(rawData);
+            blog1 = parsedData;
+            resu.send(blog1);
+
+            console.log(parsedData);
+          } catch (e) {
+            console.error(e.message);
+          }
+        });
+      }
+    );
+  })
+  .on("error", (e) => {
+    console.error(`Got error: ${e.message}`);
+  });
+
+app
+  .get("/blog2", (req, resu) => {
+    https.get(
+      `https://www.googleapis.com/blogger/v3/blogs/8550103547944167867/posts?key=AIzaSyCeHQxTnHn6e8PE5XU2g0rB6zp5qi1a1K0`,
+      (res) => {
+        const { statusCode } = res;
+        const contentType = res.headers["content-type"];
+
+        let error;
+        if (statusCode !== 200) {
+          error = new Error("Request Failed.\n" + `Status Code: ${statusCode}`);
+        } else if (!/^application\/json/.test(contentType)) {
+          error = new Error(
+            "Invalid content-type.\n" +
+              `Expected application/json but received ${contentType}`
+          );
+        }
+        if (error) {
+          console.error(error.message);
+
+          res.resume();
+          return;
+        }
+
+        let rawData = "";
+        res.on("data", (chunk) => {
+          rawData += chunk;
+        });
+        res.on("end", () => {
+          try {
+            const parsedData = JSON.parse(rawData);
+            blog2 = parsedData;
+            resu.send(blog2);
 
             console.log(parsedData);
           } catch (e) {

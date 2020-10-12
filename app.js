@@ -151,7 +151,7 @@ app
           try {
             const parsedData = JSON.parse(rawData);
             locate = parsedData;
-            resu.send(locate);
+            resu.send(locate["articles"]);
 
             console.log(parsedData);
           } catch (e) {

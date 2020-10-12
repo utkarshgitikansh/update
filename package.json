@@ -10,8 +10,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
     "express": "^4.17.1",
+    "googleapis": "^58.0.0",
+    "html-to-formatted-text": "^2.5.0",
+    "html-to-text": "^5.1.1",
+    "html2plaintext": "^2.1.2",
     "https": "^1.0.0",
+    "innerhtml": "^1.0.2",
     "node-modules": "^1.0.1",
     "request": "^2.88.2"
   }
